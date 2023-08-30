@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cypress": "^12.17.4"
+  },
+  "name": "coursecm",
+  "version": "1.0.0",
+  "description": "Course Cypress Master",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress-plugin-tab": "^1.0.5"
+  },
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "JRafaCand",
+  "license": "ISC"
+}
