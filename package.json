@@ -7,7 +7,8 @@
   "description": "Course Cypress Master",
   "main": "index.js",
   "devDependencies": {
-    "cypress-plugin-tab": "^1.0.5"
+    "cypress-plugin-tab": "^1.0.5",
+    "xpath_cypress": "^1.0.2"
   },
   "scripts": {
     "test": "cypress open"
