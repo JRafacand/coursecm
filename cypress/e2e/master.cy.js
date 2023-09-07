@@ -122,7 +122,7 @@ describe('template spec', () => {
   it.only('Contains', () => {
     cy.visit('https://demoqa.com/')
     cy.get('.category-cards').should('be.visible').contains('Book').click({ force: true })
-    cy.get('.books-wrapper').find('.rt-tr-group').eq(5).click({ force: true }) 
+    cy.get('.books-wrapper').find('.rt-tr-group').eq(5).click({force: true}) 
     
   })
 })
