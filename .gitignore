@@ -1,1 +1,10 @@
 node_modules/
+screenshots/
+videos/
+downloads/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pdf
+```

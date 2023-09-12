@@ -7,6 +7,7 @@
   "description": "Course Cypress Master",
   "main": "index.js",
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.4",
     "cypress-plugin-tab": "^1.0.5",
     "xpath_cypress": "^1.0.2"
   },

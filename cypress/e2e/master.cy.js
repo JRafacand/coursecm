@@ -1,4 +1,5 @@
 import 'cypress-plugin-tab';
+require('@4tw/cypress-drag-drop');
 require('xpath_cypress');
 
 describe('template spec', () => {
@@ -119,11 +120,49 @@ describe('template spec', () => {
         cy.get('#item-0').should('be.visible').contains('Text Box').click({ force: true })
       })
   })
-  it.only('Contains', () => {
+  it('Contains', () => {
     cy.visit('https://demoqa.com/')
     cy.get('.category-cards').should('be.visible').contains('Book').click({ force: true })
-    cy.get('.books-wrapper').find('.rt-tr-group').eq(5).click({force: true}) 
-    
+    cy.get('.books-wrapper').find('.rt-tr-group').eq(5).click({ force: true })
+
+  })
+  it('Validate Windows utf-8 or english, proportie charset', () => {
+    cy.visit('https://testsheepnz.github.io/random-number.html')
+    cy.title().should('eq', 'The Number Game')
+
+    cy.document().should('have.property', 'charset').and('eq', 'UTF-8')//validate charset, this document is utf-8
+  })
+  it('Validate uRL proportie charset', () => {
+    cy.visit('https://testsheepnz.github.io/random-number.html')
+    cy.title().should('eq', 'The Number Game')
+
+    cy.url().should('include', 'random-number.html')//validate url
+  })
+  it('Validate uRL proportie charset', () => {
+    cy.visit('https://www.udemy.com/')
+    //validate url
+  })
+  it('upload file', () => {
+    cy.visit('https://demoqa.com/upload-download')
+    cy.wait(500)
+    cy.get('#uploadFile').selectFile('cypress/fixtures/prueba.png')
+  })
+  it('drag and drop 1', () => {
+    let tiempo = 1000
+    cy.visit('https://demoqa.com/droppable')
+    cy.wait(tiempo)
+    cy.get('#draggable').drag('#droppable', {force:true})
+  })
+  it('drag and drop 3', () => {
+    let time=1000
+    cy.visit('https://demoqa.com/links')
+    cy.contains('Home').invoke('removeAttr', 'target').click({force:true})
+    cy.wait(time)
+
+  })
+  it.only('mouseslider', () => {
+    cy.visit('https://demoqa.com/slider')
+    cy.get('.range-slider').invoke('val', '85').trigger('change')
+    cy.get('#sliderValue').invoke('val', '85').trigger('change')
   })
 })
-
