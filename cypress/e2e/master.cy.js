@@ -151,18 +151,65 @@ describe('template spec', () => {
     let tiempo = 1000
     cy.visit('https://demoqa.com/droppable')
     cy.wait(tiempo)
-    cy.get('#draggable').drag('#droppable', {force:true})
+    cy.get('#draggable').drag('#droppable', { force: true })
   })
   it('drag and drop 3', () => {
-    let time=1000
+    let time = 1000
     cy.visit('https://demoqa.com/links')
-    cy.contains('Home').invoke('removeAttr', 'target').click({force:true})
+    cy.contains('Home').invoke('removeAttr', 'target').click({ force: true })
     cy.wait(time)
 
   })
-  it.only('mouseslider', () => {
+  it('mouseslider', () => {
     cy.visit('https://demoqa.com/slider')
     cy.get('.range-slider').invoke('val', '85').trigger('change')
     cy.get('#sliderValue').invoke('val', '85').trigger('change')
+  })
+  it('each', () => {
+    cy.visit('https://demoqa.com/elements')
+    cy.get('#app > div > div > div.row > div:nth-child(1) > div > div > div:nth-child(1) > span > div > div.header-text')
+    cy.get('.btn').each(($el, index, $list) => {
+      //if ($el.text().includes('Accordion'))
+      cy.log($el.text())//index and text
+      if ($el.text() == 'Droppable') {
+        cy.wrap($el).click({ force: true })
+      }
+    })
+  })
+  it('reto', () => {
+    cy.visit('https://automationexercise.com/')
+    cy.title().should('eq', 'Automation Exercise')
+    cy.get('.panel-heading').contains('Women').click({ force: true })
+    cy.get('.panel-body').contains('Dress').click({ force: true })
+    for (let i = 0; i <= 2; i++) {
+      cy.get('.fa-plus-square').eq(i).click({ force: true })
+      cy.get('.btn-default').contains('Add to cart').click({ force: true })
+      cy.wait(500)
+      cy.get('.btn-success').contains('Continue Shopping').click({ force: true })
+      cy.get('.panel-heading').contains('Women').click({ force: true })
+      cy.get('.panel-body').contains('Dress').click({ force: true })
+      cy.get('.breadcrumb').should('be.visible').contains('Products').click({ force: true })
+    }
+  })
+  it.only('reto', () => {
+    cy.visit('https://automationexercise.com/')
+    cy.title().should('eq', 'Automation Exercise')
+    const datos = [];
+    cy.get('.fa-plus-square').each(($el, index, $list) => {
+      datos[index] = $el.text();
+    }).then(() => {
+      for (let i = 0; i <= datos.length; i++) {
+        if (i==34) break;
+        cy.get('.fa-plus-square').eq(i).click({ force: true })
+        cy.get('.btn-default').contains('Add to cart').click({ force: true })
+        cy.wait(500)
+        cy.get('.btn-success').contains('Continue Shopping').click({ force: true })
+        cy.log(i, 'i Nmero de veces que se ejecuta el for')
+        //cy.get('.panel-heading' ).contains('Women').click({force:true})
+        //cy.get('.panel-body').contains('Dress').click({force:true}) 
+        cy.get('.shop-menu').should('be.visible').contains('Products').click({ force: true })
+
+      }
+    })
   })
 })

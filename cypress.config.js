@@ -7,6 +7,7 @@ module.exports = defineConfig({
     },
     viewportWidth: 1200,
     viewportHeight: 800,
+    redirectionLimit: 35,
     //chromeWebSecurity: false,
     //failOnStatusCode: false,
   },
