@@ -191,7 +191,7 @@ describe('template spec', () => {
       cy.get('.breadcrumb').should('be.visible').contains('Products').click({ force: true })
     }
   })
-  it.only('reto', () => {
+  it('reto', () => {
     cy.visit('https://automationexercise.com/')
     cy.title().should('eq', 'Automation Exercise')
     const datos = [];
@@ -199,7 +199,7 @@ describe('template spec', () => {
       datos[index] = $el.text();
     }).then(() => {
       for (let i = 0; i <= datos.length; i++) {
-        if (i==34) break;
+        if (i == 34) break;
         cy.get('.fa-plus-square').eq(i).click({ force: true })
         cy.get('.btn-default').contains('Add to cart').click({ force: true })
         cy.wait(500)
@@ -212,4 +212,6 @@ describe('template spec', () => {
       }
     })
   })
+  
+
 })
