@@ -31,3 +31,9 @@
     return false
   }) 
 
+  Cypress.Commands.add('Text_in', (selector, text) => {
+    let time = 1000;
+    cy.get(selector).should('be.visible').type(text)
+    cy.wait(time)
+  })
+
