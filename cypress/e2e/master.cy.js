@@ -153,7 +153,7 @@ describe('template spec', () => {
     cy.wait(tiempo)
     cy.get('#draggable').drag('#droppable', { force: true })
   })
-  it('drag and drop 3', () => {
+  it.only('drag and drop 3', () => {
     let time = 1000
     cy.visit('https://demoqa.com/links')
     cy.contains('Home').invoke('removeAttr', 'target').click({ force: true })
