@@ -2,7 +2,9 @@ Feature: Cucumber demo
 
   Scenario: User can create a new account
     Given Open navegator
-    When  Type name
-    When  Type email
-    And   Type Address
-    Then  validate page title
+    When  Type name "Rafael Candilejo"
+     And  Type email "rafa@gmail.com"
+    #Then  Click on submit button
+   
+ 
+
