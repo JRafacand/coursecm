@@ -18,8 +18,9 @@ module.exports = defineConfig({
     viewportHeight: 800,
     redirectionLimit: 35,
     chromeWebSecurity: false,
+    CYPRESS_firefoxWebSecurity: false
     //failOnStatusCode: false,
-    specPattern: "**/*.feature",
+    //specPattern: "**/*.feature",
 
   },
 
